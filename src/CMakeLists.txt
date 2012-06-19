@@ -1,4 +1,3 @@
-
 include_directories(${FCITX4_FCITX_INCLUDE_DIRS})
 include_directories(${FCITX4_FCITX_CONFIG_INCLUDE_DIRS})
 include_directories(${FCITX4_FCITX_UTILS_INCLUDE_DIRS})
@@ -12,5 +11,7 @@ target_link_libraries(fcitx-rime ${Rime_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 fcitx_add_addon_conf_file(fcitx-rime.conf)
 fcitx_add_inputmethod_conf_file(rime.conf)
 
+set(exec_prefix "${CMAKE_INSTALL_PREFIX}/bin")
 add_executable(build_yaml main.c)
+install(TARGETS build_yaml DESTINATION ${exec_prefix})
 target_link_libraries(build_yaml ${Rime_LIBRARIES})
